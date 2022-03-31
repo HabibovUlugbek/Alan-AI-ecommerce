@@ -25,6 +25,12 @@ export const Card = () => {
       onCommand: (commandData) => {
         if (commandData.command === "getMenu") {
           setMainCard(commandData.data);
+        } else if (commandData.command === "showCard") {
+          addCardHandler(commandData.data);
+        } else if (commandData.command === "openCard") {
+          setIsModal(commandData.data);
+        } else if (commandData.command === "closeCard") {
+          setIsModal(commandData.data);
         }
       },
     });
@@ -61,11 +67,6 @@ export const Card = () => {
                 </div>
                 <span className='text-muted'>${card.price}</span>
               </div>
-              <button
-                onClick={() => addCardHandler(card)}
-                className='mt-3 btn btn-outline-primary'>
-                Add Card
-              </button>
             </div>
           ))}
         </div>
